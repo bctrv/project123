@@ -1,18 +1,20 @@
+import org.junit.jupiter.api.Test;
+
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 public class TestClass {
 
-    public void test1() {
+    @Test
+    void test1() {
         given()
                 .baseUri("https://postman-echo.com")
-                .contentType("text/plain; charset=UTF-8")
-                .body("hey there")
+                .body("some data")
                 .when()
                 .post("/post")
                 .then()
                 .statusCode(200)
-                .body("data", equalTo("hey there"))
+                .body("data", equalTo("some data"))
         ;
     }
 }
